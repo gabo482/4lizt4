@@ -68,7 +68,3 @@ echo > Suppliers.php
 
 
 
-
-C:\Users\pc-ho\Documents\Alyzta\4lizt4>git config --global user.email "vcruztesci@gmail.com"
-
-C:\Users\pc-ho\Documents\Alyzta\4lizt4> git config --global user.name "gabo482"
