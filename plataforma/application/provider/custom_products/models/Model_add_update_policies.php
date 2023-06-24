@@ -75,15 +75,16 @@ class Model_add_update_policies extends CI_Model
     }
     /*add provider contact*/
     public function add_contact($data=array()){
+        $provider_id = $this->session->userdata('iAdminId');
         $insert_contact = array();
-        $insert_contact['iProviderId'] =$data['dpm_provider_id'];
-        $insert_contact['iUsersId'] = $data['dpm_user_id'];
+        $insert_contact['iUsersId'] = $provider_id;
         $insert_contact['vRole'] = $data['pcm_role'];
         $insert_contact['vName'] = $data['pcm_name'];
         $insert_contact['vEmail'] = $data['pcm_email'];
         $insert_contact['vContactNo'] = $data['pcm_contact_no'];
-        $this->db->insert("provider_contacts",$insert_contact);        
-        $id=$this->db->insert_id();        
+        $insert_contact['dAddedDate'] = date('Y-m-d H:i:s');
+        $this->db->insert("provider_contacts",$insert_contact);
+        $id=$this->db->insert_id();
         return $id;
     }
 

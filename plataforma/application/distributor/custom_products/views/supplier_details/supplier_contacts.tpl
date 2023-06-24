@@ -6,58 +6,37 @@
                     <%/foreach%>
         </td>
     </tr>
-<%else%>
+    <%else%>
         <tr>
             <td colspan="2"  id="contacts_listing_inner_wp">
                 <div class='norecordfound' id='nocontactfound'>                    
-                  <i class='fa fa-users'></i> <%lang('LBL_DISTRIBUTOR_PANEL_CUSTOM_PRODUCTS_SUPPLIER_YOU_HAVE_NOT_ADDED_ANY_CONTACT')%>    
+                    <i class='fa fa-users'></i> <%lang('LBL_DISTRIBUTOR_PANEL_CUSTOM_PRODUCTS_SUPPLIER_YOU_HAVE_NOT_ADDED_ANY_CONTACT')%>                    
                 </div>
             </td>
         </tr>
-<%/if%>
-
-       <%if !isset($product_details) %>
-       
-      
-        <%foreach $dataMap key=key item=item %>
-            <input type="hidden"  id="iProviderId" value="<%$item['iProviderId']%>" />
-            <input type="hidden"  id="iUserId" value="<%$distributor_id%>" >  
-        <%/foreach%>
-    <%/if%>
-
+        <%/if%>
 
 
             <script type="text/javascript">
-               
-                 
                 function reload_contact_list() {
-             
-                    var iProviderId = $("#iProviderId").val();
-                    var iUserId = $("#iUserId").val();
-                     $("#supplier_contact_container").load(admin_url + "distributor/custom_products/suppliers/load_contacts");                                                   
+                    $("#supplier_contact_container").load(admin_url + "custom_products/suppliers/load_contacts");
                 }
 
-        
+
 
                 $(".contact-form input").die().live("keyup", function(e) {
                     validateinput($(this));
                 });
 
                 $("#addnewcontact").die().live("click", function(e) {
-                                       
-                    // var dpm_provider_id = $('input[name=dpm_provider_id]').val();
-                //console.log('valor provider_id :'+dpm_provider_id );
-                //document.getElementById("dpm_provider_id").setAttribute('value',dpm_provider_id);
-                   
                     $.ajax({
                         type: 'POST',
-                        url: admin_url + "custom_products/suppliers/add_contact",
+                        url: admin_url + "custom_products/suppliers/add_contact/<%$dataMap[0]['iProviderId']%>",
                         dataType: 'html',
                         success: function(data) {
                             $("#nocontactfound").remove();
                             $("#contacts_listing_inner_wp").append(data);
-                            var dpm_provider_id = $('input[name=dpm_provider_id]').val();
-                            $('.class_dpm_provider_id').val(dpm_provider_id);
+
                             var scroll_obj = $(".scroll_here").last();
                             $('html,body').stop(true, false).animate({
                             scrollTop: (scroll_obj.offset().top-150)
@@ -75,7 +54,6 @@
                 $(".removecontact").die().live("click", function(e) {
                     var obj = $(this);
                     var id = obj.data('id');
-                    console.log(id);
                     var data_save = {
                         "id": id
                     };

@@ -66,13 +66,12 @@ class Suppliers extends Cit_Controller
     }
     /*load provider contact*/
     public function load_contacts() {
-        /*
+        $provider_id = $this->session->userdata('iAdminId');
         $inp_params = array();
-        $inp_params['provider_id'] = $this->session->userdata('iAdminId');
+        $inp_params['provider_id'] = $provider_id;
         $provider_data = $this->cit_api_model->callAPI("distributor_provider_details", $inp_params);
-        $this->smarty->assign("provider_contact_details",$provider_data['data']['getprovidercontacts'])
-        echo $this->parser->parse("supplier_details/supplier_contacts.tpl",array(),true);
-        */
+        $this->smarty->assign("provider_contact_details",$provider_data['data']['getprovidercontacts']);
+        echo $this->parser->parse("supplier_details/supplier_contacts.tpl",array(),true); 
         exit;
     }
 }

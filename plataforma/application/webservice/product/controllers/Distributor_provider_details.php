@@ -296,14 +296,13 @@ class Distributor_provider_details extends Cit_Controller
      */
     public function getprovidercontacts($input_params = array())
     {
-    
+
         $this->block_result = array();
         try
-        {            
+        {
+
             $provider_id = isset($input_params["provider_id"]) ? $input_params["provider_id"] : "";
-            $user_id = isset($input_params["user_id"]) ? $input_params["user_id"] : "";
-            
-            $this->block_result = $this->provider_contacts_model->getprovidercontacts($provider_id, $user_id );
+            $this->block_result = $this->provider_contacts_model->getprovidercontacts($provider_id);
             if (!$this->block_result["success"])
             {
                 throw new Exception("No records found.");
@@ -477,7 +476,6 @@ class Distributor_provider_details extends Cit_Controller
             'pcm_added_date',
             'pcm_available_time',
             'pcm_contact_no_1',
-            'dpm_provider_id',
         );
         $output_keys = array(
             'getproviderdetails_v1',

@@ -44,36 +44,32 @@ class Provider_contacts_model extends CI_Model
      * @param string $provider_id provider_id is used to process query block.
      * @return array $return_arr returns response of query block.
      */
-    public function getprovidercontacts($provider_id = '', $user_id ='')
+    public function getprovidercontacts($provider_id = '')
     {
         try
         {
             $result_arr = array();
 
-            $this->db->from("provider_contacts_1 AS pcm");
-            $this->db->select("pcm.iUsersId AS dpm_provider_id"); //test=vgca iUsersId
+            $this->db->from("provider_contacts AS pcm");
+
             $this->db->select("pcm.iProviderContactsId AS pcm_provider_contacts_id");
             $this->db->select("pcm.vRole AS pcm_role");
             $this->db->select("pcm.vName AS pcm_name");
             $this->db->select("pcm.vEmail AS pcm_email");
             $this->db->select("pcm.vContactNo AS pcm_contact_no");
-           
-           
-            if (isset($user_id) && $user_id != "")    
-                $this->db->where("pcm.iUsersId =", $user_id ); 
-           
-             if (isset($provider_id) && $provider_id != "")           
-                $this->db->where("pcm.iProviderId =", $provider_id);                
-            
-            //$this->db->order_by("pcm.dAddedDate", "desc");
+            if (isset($provider_id) && $provider_id != "")
+            {
+                $this->db->where("pcm.iUsersId =", $provider_id);
+            }
+
+            $this->db->order_by("pcm.dAddedDate", "desc");
 
             $result_obj = $this->db->get();
             $result_arr = is_object($result_obj) ? $result_obj->result_array() : array();
             if (!is_array($result_arr) || count($result_arr) == 0)
             {
                 throw new Exception('No records found.');
-            } 
-            
+            }
             $success = 1;
         }
         catch(Exception $e)
@@ -83,7 +79,7 @@ class Provider_contacts_model extends CI_Model
         }
 
         $this->db->_reset_all();
-    
+        //echo $this->db->last_query();
         $return_arr["success"] = $success;
         $return_arr["message"] = $message;
         $return_arr["data"] = $result_arr;
