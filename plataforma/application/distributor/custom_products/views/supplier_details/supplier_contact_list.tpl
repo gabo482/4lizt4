@@ -3,7 +3,7 @@
         <td colspan="2" id="contacts_listing_inner_wp">
             <%foreach from=$provider_contact_details item=row%>
                 <%include file="supplier_details/supplier_contact_row.tpl"%>
-            <%/foreach%>
+                    <%/foreach%>
         </td>
     </tr>
     <%else%>
@@ -31,7 +31,7 @@
                 $("#addnewcontact").die().live("click", function(e) {
                     $.ajax({
                         type: 'POST',
-                        url: admin_url + "custom_products/suppliers/add_contact/<%$dataMap[0]['iProviderId']%>",
+                        url: admin_url + "custom_products/suppliers/add_contact",
                         dataType: 'html',
                         success: function(data) {
                             $("#nocontactfound").remove();
@@ -64,7 +64,7 @@
                             bt_type: "Yes",
                             click: function() {
                                 $(this).remove();
-                                $.post(admin_url + "custom_products/suppliers/remove_contact/<%$dataMap[0]['iProviderId']%>", data_save, function(data, status) {
+                                $.post(admin_url + "custom_products/suppliers/remove_contact", data_save, function(data, status) {
                                     var resp = $.parseJSON(data);
                                     if($("#contacts_listing_inner_wp table").length >= 2){
                                         obj.closest('table.contact-list').remove();    
@@ -170,55 +170,3 @@
                     return has_error;
                 }
             </script>
-
-
-
-
-
-<!--<tr>
-    <td colspan="2" id="contacts_listing_inner_wp">
-        <%if $live_package_code|lower eq 'free'%>
-            <a href="<%$this->config->item('admin_url')%>#distributor/subscriptions/index">Actualiza para ver</a>
-        <%else%>
-            <%if $provider_contact_details|@count gt 0%>
-            <%foreach from=$provider_contact_details item=row%>
-               <table class="table table-striped contact-list" border="0" cellpadding="0" cellspacing="0" width="100%">
-                    <tbody>
-                        <tr>
-                            <td colspan="2" class='contact-role'>
-                                <%$row['pcm_role']%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class='table-title'><%lang('LBL_SUPPLIER_CONTACT_NAME')%></td>
-                            <td>
-                                <%$row['pcm_name']%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class='table-title'><%lang('LBL_SUPPLIER_CONTACT_EMAIL')%></td>
-                            <td>
-                                <a href='mailto:<%$row["pcm_email"]%>'>
-                                    <%$row['pcm_email']%>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class='table-title'><%lang('LBL_SUPPLIER_CONTACT_PHONE')%></td>
-                            <td>
-                                <%$row['pcm_contact_no']%>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            <%/foreach%>
-        <%else%>
-            <td colspan="2">
-                <div class='norecordfound'>
-                    <i class='fa fa-users'></i> <%lang('LBL_DISTRIBUTOR_PANEL_CUSTOM_PRODUCTS_SUPPLIER_POLICY_TAB_NO_CONTACT_ADDED_YET')%>
-                </div>
-            </td>
-        <%/if%>
-        <%/if%>
-    </td>
-</tr>-->
