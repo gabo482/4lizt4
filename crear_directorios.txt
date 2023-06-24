@@ -1,0 +1,66 @@
+
+md plataforma\application\distributor\custom_products\views\supplier_details\supplier_contact_list.tpl' : Se ha intentado una operación de socket en un host no accesible
+md plataforma\application\distributor\custom_products\views\supplier_details\supplier_contact_row.tpl' : Se ha intentado una operación de socket en un host no accesible
+md plataforma\application\distributor\custom_products\views\supplier_details\add_new_contact.tpl' : Se ha intentado una operación de socket en un host no accesible
+md plataforma\application\distributor\custom_products\controllers\Suppliers.php' : Se ha intentado una operación de socket en un host no accesible
+md plataforma\application\distributor\custom_products\controllers\Distributor_provider_contact.php' : Se ha intentado una operación de socket en un host no accesible
+md plataforma\application\distributor\custom_products\models\Distributor_provider_contact_model.php' : Se ha intentado una operación de socket en un host no accesible
+md plataforma\application\distributor\custom_products\views\supplier_details\supplier_details_tab.tpl' : Se ha intentado una operación de socket en un host no accesible
+md plataforma\application\distributor\custom_products\views\supplier_details\supplier_contacts.tpl' : Se ha intentado una operación de socket en un host no accesible
+md plataforma\application\distributor\custom_products\models\Model_add_update_policies.php' : Se ha intentado una operación de socket en un host no accesible
+md plataforma\application\webservice\provider\models\Provider_contacts_model.php' : Se ha intentado una operación de socket en un host no accesible
+md plataforma\application\webservice\product\controllers\Distributor_provider_details.php' : Se ha intentado una operación de socket en un host no accesible
+md plataforma\application\provider\custom_products\models\Model_add_update_policies.php' : Se ha intentado una operación de socket en un host no accesible
+md plataforma\application\provider\custom_products\views\supplier_details\supplier_contact_row.tpl' : Se ha intentado una operación de socket en un host no accesible
+md plataforma\application\provider\custom_products\controllers\Suppliers.php' : Se ha intentado una operación de socket en un host no accesible
+
+
+echo some content of your choice > filename.txt
+
+cd C:\Users\pc-ho\Documents\Alyzta\4lizt4\
+
+cd plataforma\application\distributor\custom_products\views\supplier_details\
+echo > supplier_contact_list.tpl
+
+cd plataforma\application\distributor\custom_products\views\supplier_details\
+echo > supplier_contact_row.tpl
+
+cd plataforma\application\distributor\custom_products\views\supplier_details\
+echo > add_new_contact.tpl
+cd plataforma\application\distributor\custom_products\controllers\
+echo > Suppliers.php
+cd plataforma\application\distributor\custom_products\controllers\
+echo > Distributor_provider_contact.php
+cd plataforma\application\distributor\custom_products\models\
+echo > Distributor_provider_contact_model.php
+
+cd plataforma\application\distributor\custom_products\views\supplier_details\
+echo >supplier_details_tab.tpl
+
+cd plataforma\application\distributor\custom_products\views\supplier_details\
+echo > supplier_contacts.tpl
+
+
+cd C:\Users\pc-ho\Documents\Alyzta\4lizt4\
+
+cd plataforma\application\distributor\custom_products\models\
+echo > Model_add_update_policies.php
+
+cd plataforma\application\webservice\provider\models\
+echo >Provider_contacts_model.php
+
+cd C:\Users\pc-ho\Documents\Alyzta\4lizt4\
+
+cd plataforma\application\webservice\product\controllers\
+echo > Distributor_provider_details.php
+
+cd plataforma\application\provider\custom_products\models\
+echo > Model_add_update_policies.php
+
+cd C:\Users\pc-ho\Documents\Alyzta\4lizt4\
+
+cd plataforma\application\provider\custom_products\views\supplier_details\
+echo > supplier_contact_row.tpl
+
+cd plataforma\application\provider\custom_products\controllers\
+echo > Suppliers.php
