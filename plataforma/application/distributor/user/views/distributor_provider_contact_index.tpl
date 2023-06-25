@@ -8,7 +8,8 @@
             <!-- Page Loader -->
             <div id="ajax_qLoverlay"></div>
             <div id="ajax_qLbar"></div>
-            <!-- Middle Content -->            
+            <!-- Middle Content -->
+            <style>#add_list2_top {display: none;}</style>
             <div id="scrollable_content" class="scrollable-content top-list-spacing">
                 <div class="grid-data-container pad-calc-container">
                     <div class="top-list-tab-layout" id="top_list_grid_layout">
