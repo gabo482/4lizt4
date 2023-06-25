@@ -481,7 +481,9 @@ class Distributor_provider_contact_model extends CI_Model
             $this->db->select($this->table_alias.".".$this->primary_key." AS ".$this->primary_alias);
         }
         $this->db->select("dpc.iUsersId AS dpc_users_id");
-        $this->db->select("dpc.vProviderName AS dpc_provider_name");
+        //(SELECT getCompanyName(dpc.iProviderId)) AS `dpc_provider_name`,
+        //$this->db->select("dpc.vProviderName AS dpc_provider_name");
+        $this->db->select("(SELECT getCompanyName(dpc.iProviderId)) AS dpc_provider_name");
         $this->db->select("dpc.iProviderId AS dpc_provider_id");
         $this->db->select("dpc.vRoleProviderContact AS dpc_role_provider_contact");
         $this->db->select("dpc.vNameProviderContact AS dpc_name_provider_contact");
@@ -522,7 +524,7 @@ class Distributor_provider_contact_model extends CI_Model
         $this->db->flush_cache();
         $listing_data = $this->listing->getDataForJqGrid($return_data, $filter_config, $page, $total_pages, $total_records);
         $this->listing_data = $return_data;
-       // echo $this->db->last_query();
+        //echo $this->db->last_query();
         return $listing_data;
     }
 

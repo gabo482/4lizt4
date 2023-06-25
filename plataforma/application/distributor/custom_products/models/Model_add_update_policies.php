@@ -93,12 +93,12 @@ class Model_add_update_policies extends CI_Model
         $insert_contact = array();
         $insert_contact['iProviderId'] = $data['dpm_provider_id'];
         $insert_contact['iUsersId'] = $data['dpm_user_id'];
-        $insert_contact['vRole'] = $data['pcm_role'];
-        $insert_contact['vName'] = $data['pcm_name'];
-        $insert_contact['vEmail'] = $data['pcm_email'];
-        $insert_contact['vContactNo'] = $data['pcm_contact_no'];
-        $insert_contact['dAddedDate'] = date('Y-m-d H:i:s');
-        $this->db->insert("provider_contacts_1",$insert_contact);
+        $insert_contact['vRoleProviderContact'] = $data['pcm_role'];
+        $insert_contact['vNameProviderContact'] = $data['pcm_name'];
+        $insert_contact['vEmailProviderContact'] = $data['pcm_email'];
+        $insert_contact['vPhoneProviderContact'] = $data['pcm_contact_no'];
+    //  $insert_contact['dAddedDate'] = date('Y-m-d H:i:s');
+        $this->db->insert("distributor_provider_contact",$insert_contact);
         $id=$this->db->insert_id();
         return $id;
     }

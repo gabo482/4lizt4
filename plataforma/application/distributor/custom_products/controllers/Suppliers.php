@@ -49,13 +49,7 @@ class Suppliers extends Cit_Controller
         echo $emptyfrm; exit;
     }*/
     /*update provider contact*/
-    public function update_contact(){
-       /*
-        $param['pcm_role'] = $this->params_arr['inp_role'];
-        $param['pcm_name'] = $this->params_arr['inp_name'];
-        $param['pcm_email']= $this->params_arr['inp_email'];
-        $param['pcm_contact_no'] = $this->params_arr['inp_telephone'];
-        */
+    public function update_contact(){     
         $param['pcm_role'] = $this->params_arr['inp_role'];
         $param['pcm_name'] = $this->params_arr['inp_name'];
         $param['pcm_email']= $this->params_arr['inp_email'];
