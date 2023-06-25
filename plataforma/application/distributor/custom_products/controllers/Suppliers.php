@@ -50,11 +50,18 @@ class Suppliers extends Cit_Controller
     }*/
     /*update provider contact*/
     public function update_contact(){
-       
+       /*
         $param['pcm_role'] = $this->params_arr['inp_role'];
         $param['pcm_name'] = $this->params_arr['inp_name'];
         $param['pcm_email']= $this->params_arr['inp_email'];
         $param['pcm_contact_no'] = $this->params_arr['inp_telephone'];
+        */
+        $param['pcm_role'] = $this->params_arr['inp_role'];
+        $param['pcm_name'] = $this->params_arr['inp_name'];
+        $param['pcm_email']= $this->params_arr['inp_email'];
+        $param['pcm_contact_no'] = $this->params_arr['inp_telephone'];
+        $param['dpm_provider_id'] = $this->params_arr['dpm_provider_id'];
+        $param['dpm_user_id'] = $this->params_arr['dpm_user_id'];
         $contact_id = $this->model_add_update_policies->add_contact($param);
         $this->smarty->assign('row',$param);
         echo $this->parser->parse("supplier_details/supplier_contact_row.tpl",array(),true);

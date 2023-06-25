@@ -1,6 +1,7 @@
 <table class="table table-striped contact-list contact-form" border="0" cellpadding="0" cellspacing="0" width="100%">
     <tbody>
-        <input type="" name="dpm_provider_id" id="dpm_provider_id" value="<%$provider_id%>">
+        <input type="hidden" name="dpm_provider_id" id="dpm_provider_id" value="<%$provider_id%>">
+        <input type="hidden" name="dpm_user_id"  value="<%$this->session->userdata('iAdminId')%>">
         <tr>
             <td class='table-title  contact-form-lbl'>
                 <%lang('LBL_SUPPLIER_CONTACT_ROLE')%>
