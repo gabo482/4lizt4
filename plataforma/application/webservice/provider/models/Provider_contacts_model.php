@@ -44,25 +44,24 @@ class Provider_contacts_model extends CI_Model
      * @param string $provider_id provider_id is used to process query block.
      * @return array $return_arr returns response of query block.
      */
-    public function getprovidercontacts($provider_id = '')
+    public function getprovidercontacts($provider_id = '',$user_id ='')
     {
         try
         {
             $result_arr = array();
 
-            $this->db->from("provider_contacts AS pcm");
-
-            $this->db->select("pcm.iProviderContactsId AS pcm_provider_contacts_id");
-            $this->db->select("pcm.vRole AS pcm_role");
-            $this->db->select("pcm.vName AS pcm_name");
-            $this->db->select("pcm.vEmail AS pcm_email");
-            $this->db->select("pcm.vContactNo AS pcm_contact_no");
-            if (isset($provider_id) && $provider_id != "")
-            {
-                $this->db->where("pcm.iUsersId =", $provider_id);
-            }
-
-            $this->db->order_by("pcm.dAddedDate", "desc");
+            $this->db->from("distributor_provider_contact AS dpc");
+            $this->db->select("dpc.iDistributorProviderContactId AS dpc_provider_contact_id");
+            $this->db->select("dpc.vRoleProviderContact AS dpc_role_provider_contact");
+            $this->db->select("dpc.vNameProviderContact AS dpc_name_provider_contact");
+            $this->db->select("dpc.vEmailProviderContact AS dpc_email_provider_contact");
+            $this->db->select("dpc.vPhoneProviderContact AS dpc_phone_provider_contact");
+            
+             if (isset($user_id) && $user_id != "")    
+                $this->db->where("dpc.iUsersId =", $user_id ); 
+           
+             if (isset($provider_id) && $provider_id != "")           
+                $this->db->where("dpc.iProviderId =", $provider_id);      
 
             $result_obj = $this->db->get();
             $result_arr = is_object($result_obj) ? $result_obj->result_array() : array();
@@ -83,6 +82,7 @@ class Provider_contacts_model extends CI_Model
         $return_arr["success"] = $success;
         $return_arr["message"] = $message;
         $return_arr["data"] = $result_arr;
+        
         return $return_arr;
     }
 }

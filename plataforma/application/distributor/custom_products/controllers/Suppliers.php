@@ -39,7 +39,7 @@ class Suppliers extends Cit_Controller
     }
 
     /*add provider contact*/
-    public function add_contact($provider_id) {
+    public function add_contact($provider_id) {     
         $emptyfrm=$this->parser->parse("supplier_details/add_new_contact.tpl",array('provider_id'=>$provider_id),true);
         echo $emptyfrm; exit;
     }
@@ -50,10 +50,10 @@ class Suppliers extends Cit_Controller
     }*/
     /*update provider contact*/
     public function update_contact(){     
-        $param['pcm_role'] = $this->params_arr['inp_role'];
-        $param['pcm_name'] = $this->params_arr['inp_name'];
-        $param['pcm_email']= $this->params_arr['inp_email'];
-        $param['pcm_contact_no'] = $this->params_arr['inp_telephone'];
+        $param['dpc_role_provider_contact'] = $this->params_arr['inp_role'];
+        $param['dpc_name_provider_contact'] = $this->params_arr['inp_name'];
+        $param['dpc_email_provider_contact']= $this->params_arr['inp_email'];
+        $param['dpc_phone_provider_contact'] = $this->params_arr['inp_telephone'];
         $param['dpm_provider_id'] = $this->params_arr['dpm_provider_id'];
         $param['dpm_user_id'] = $this->params_arr['dpm_user_id'];
         $contact_id = $this->model_add_update_policies->add_contact($param);

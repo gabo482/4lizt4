@@ -68,10 +68,12 @@ class Model_add_update_policies extends CI_Model
 
     /*remove provider contact*/
     public function remove_contact($id=''){
-        $provider_id = $this->session->userdata('iAdminId');
-        $this->db->where('iProviderContactsId',$id);
-        $this->db->where('iUsersId',$provider_id);
-        return $this->db->delete("provider_contacts");
+        //$provider_id = $this->session->userdata('iAdminId');
+        //$this->db->where('iProviderContactsId',$id);
+        //$this->db->where('iUsersId',$provider_id);
+        $this->db->where('iDistributorProviderContactId',$id);
+        $this->db->delete("distributor_provider_contact");
+        return $id;
     }
     
     /*add provider contact*/
@@ -93,14 +95,16 @@ class Model_add_update_policies extends CI_Model
         $insert_contact = array();
         $insert_contact['iProviderId'] = $data['dpm_provider_id'];
         $insert_contact['iUsersId'] = $data['dpm_user_id'];
-        $insert_contact['vRoleProviderContact'] = $data['pcm_role'];
-        $insert_contact['vNameProviderContact'] = $data['pcm_name'];
-        $insert_contact['vEmailProviderContact'] = $data['pcm_email'];
-        $insert_contact['vPhoneProviderContact'] = $data['pcm_contact_no'];
-    //  $insert_contact['dAddedDate'] = date('Y-m-d H:i:s');
+        $insert_contact['vRoleProviderContact'] = $data['dpc_role_provider_contact'];
+        $insert_contact['vNameProviderContact'] = $data['dpc_name_provider_contact'];
+        $insert_contact['vEmailProviderContact'] = $data['dpc_email_provider_contact'];
+        $insert_contact['vPhoneProviderContact'] = $data['dpc_phone_provider_contact'];
+      
+       
         $this->db->insert("distributor_provider_contact",$insert_contact);
         $id=$this->db->insert_id();
         return $id;
+    
     }
    
 }

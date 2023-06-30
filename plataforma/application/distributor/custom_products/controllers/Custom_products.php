@@ -164,6 +164,7 @@ class Custom_products extends Cit_Controller
         $distributor_id = $this->session->userdata('iAdminId');
         $inp_params = array();
         $inp_params['provider_id'] = $provider_id;
+		$inp_params['user_id']=$distributor_id;
         $provider_data = $this->cit_api_model->callAPI("distributor_provider_details", $inp_params);
         $provider_success = $provider_data['settings']['success'];
         $live_package_code = $this->session->userdata('live_subscription_detail')[0]['vPackageCode'];
@@ -172,6 +173,7 @@ class Custom_products extends Cit_Controller
             $this->smarty->assign("provider_contact_details",$provider_data['data']['getprovidercontacts']);
             $this->smarty->assign("provider_reff_details",$provider_data['data']['get_provider_reff']);
             $this->smarty->assign("provider_policies",$provider_data['data']['getproviderpolicies']);
+			
         }
 
         $inp_params = array();

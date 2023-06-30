@@ -10,18 +10,18 @@
 							<select name="provider_email" id="provider_email" class="chosen-select" >
 										<%if !isset($product_details) %>
 											<%if $provider_details['u_alternate_email'] neq ''%>
-													<option selected value="<%$provider_details['u_alternate_email']%>"><%$provider_details['u_alternate_email']%>&#62;</option>
+													<option selected value="<%$provider_details['u_alternate_email']%>">&#60;<%$provider_details['u_alternate_email']%>&#62;</option>
 											<%/if%>
 										<%/if%>
 										<%if count($provider_contact_details) gt 0%>
 													<%foreach from=$provider_contact_details item=row%>
-														<option selected value="<%$row['pcm_provider_contacts_id']%>"><%$row['pcm_name']%>&#60;<%$row['pcm_email']%>&#62;</option>
+														<option selected value="<%$row['dpc_email_provider_contact']%>"><%$row['dpc_name_provider_contact']%>&#60;<%$row['dpc_email_provider_contact']%>&#62;</option>
 														 
 													<%/foreach%>
 													<%else%>
 													<option value="none" selected disabled hidden> No hay contactos registrados
-										 <%/if%>													
-							</select>
+										 <%/if%>		 				 
+							</select>						
 						</div>
 					</div>
 					<div class="form-group">
@@ -50,13 +50,6 @@
 	 <button type="button" id="btn_submit_contact_form" class="btn btn-info btn-lg custom-sub-btn"><%lang('LBL_DISTRIBUTOR_PANEL_CUSTOM_PRODUCTS_CONTACT_SUPPLIER_FORM_BTN_SUBMIT')%></button>
 	</div>
 </form>
-		
-		
-		
-		
-		
-	</div>
-	
 <style type="text/css">
 	.required{color:red;}
 </style>
@@ -77,8 +70,28 @@ function myFunction() {
 		var vld = $('#MySuppInfoFormContact').valid();
         if (!vld) {
             return false;
-        } else {            
-            $('#MySuppInfoFormContact').submit();
+        } else {
+            //$('#MySuppInfoFormContact').submit();
+			$.ajax({
+		            type:'POST',
+		            url: $('#MySuppInfoFormContact').attr("action"),
+		            data:$('#MySuppInfoFormContact').serialize(),
+		            dataType:'json',
+		            success:function(data){
+					console.log('Peticion Data', data)
+		                if(data.success)
+		                {
+							alert(data.message)
+		                }
+		                else
+		                {
+		                     console.log(data);
+		                }
+		            },
+		            error: function(data){
+		                console.log(data);
+		            }
+		        });
         }
 	}
 	function setContactValidate(){
@@ -130,11 +143,10 @@ function myFunction() {
 		            data:cont_frm_handler.serialize(),
 		            dataType:'json',
 		            success:function(data){
-					console.log('test', data)
 		                if(data.success)
 		                {
 		                	Project.hide_adaxloading_div('#gmf_autocomplete_p_location');
-		                	Project.setMessage("¡Mensaje enviado correctamente!",1);
+		                	Project.setMessage("¡Mensaje enviado al proveedor!",1);
 		                	$("#subject").val('');
 		                	$("#note").val('');
 		                    //window.location.reload();

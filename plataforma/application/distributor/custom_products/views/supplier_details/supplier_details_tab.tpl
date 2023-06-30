@@ -93,7 +93,7 @@
     </div>
 </div>
 <%/if%>
-<!-- PROVIDER CONTACTS 
+<!-- PROVIDER CONTACTS -->
 <div class="tab-row row_4 col-sm-6">
     <div class="col-sm-12 detail_view_blocks provider-contact-blocks">
         <h4>
@@ -107,12 +107,12 @@
         </table>
     </div>
 </div>
-PROVIDER CONTACTS -->    
+<!-- PROVIDER CONTACTS -->    
 <div class="tab-row row_3 col-sm-6" style="margin-left:-15px;">
     <div class="col-sm-12 detail_view_blocks">
     <h4>
         <%lang('LBL_PROVIDER_PANEL_CUSTOM_PRODUCTS_COMPANY_DATA')%>
-   <!--     <a href="<%$this->config->item('admin_url')%>#user/distributor_provider_contact/index|iUserId|<%$distributor_id%>|" class='btn btn-primary' id="addnewcontact" style="float:right;margin-top:-9px;"><i class="fa fa-plus"></i> <%lang('LBL_BTN_SEE_CONTACT_PROVIDER')%></a> -->
+    <a href="<%$this->config->item('admin_url')%>#user/distributor_provider_contact/index|iUserId|<%$distributor_id%>|" class='btn btn-primary' id="addnewcontact" style="float:right;margin-top:-9px;"><i class="fa fa-eye"></i> <%lang('LBL_BTN_SEE_CONTACT_PROVIDER')%></a>  
     </h4>
     <table class="table table-striped" border="0" cellpadding="0" cellspacing="0" width="100%">
         <tbody>
